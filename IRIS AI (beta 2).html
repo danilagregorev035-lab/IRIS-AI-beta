@@ -38,7 +38,7 @@
       transition: background 0.3s, color 0.3s;
       position: relative;
     }
-    /* Сайдбар */
+    
     .sidebar {
       width: var(--sidebar-width);
       min-width: var(--sidebar-width);
@@ -87,7 +87,7 @@
     .chat-delete:hover { color: #ef4444; background: rgba(239, 68, 68, 0.15); }
     .sidebar-footer { padding: 12px 16px; border-top: 1px solid var(--border-light); font-size: 12px; color: #64748b; text-align: center; }
 
-    /* Основная область */
+
     .main { flex: 1; display: flex; flex-direction: column; height: 100vh; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(20px); min-width: 0; }
     .main-header {
       padding: 16px 28px; border-bottom: 1px solid var(--border-light);
@@ -160,7 +160,7 @@
     .chat-messages::-webkit-scrollbar { width: 6px; }
     .chat-messages::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 3px; }
 
-    /* Модалка */
+   
     .modal {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.6); backdrop-filter: blur(12px);
@@ -197,7 +197,7 @@
     }
     @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
-    /* Темы */
+    
     body.theme-light {
       --bg-primary: #f1f5f9; --bg-secondary: #e2e8f0; --bg-card: rgba(255, 255, 255, 0.8);
       --text-primary: #0f172a; --text-secondary: #334155; --accent: #2563eb;
@@ -241,7 +241,7 @@
       --accent: #f43f5e; --accent-hover: #e11d48;
     }
 
-    /* ========== МОБИЛЬНАЯ АДАПТАЦИЯ ========== */
+    
     @media (max-width: 768px) {
       .sidebar {
         position: fixed;
@@ -352,7 +352,7 @@
       }
     }
 
-    /* Оверлей при открытом меню на мобильных */
+   
     .sidebar-overlay {
       display: none;
       position: fixed;
@@ -374,7 +374,7 @@
   <div class="toast-container" id="toastContainer"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- Сайдбар -->
+  
   <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <span class="logo">IRIS</span>
@@ -385,7 +385,7 @@
     <div class="sidebar-footer">IRIS AI · без ключа</div>
   </div>
 
-  <!-- Основная область -->
+
   <div class="main">
     <div class="main-header">
       <button class="burger-btn" id="burgerBtn"><i class="fas fa-bars"></i></button>
@@ -402,7 +402,7 @@
       </div>
     </div>
 
-    <!-- ПРЕДУПРЕЖДЕНИЕ -->
+   
     <div class="warning-banner" id="warningBanner">
       <i class="fas fa-exclamation-triangle"></i>
       <div>
@@ -424,7 +424,7 @@
     </div>
   </div>
 
-  <!-- Модальное окно настроек -->
+ 
   <div class="modal" id="settingsModal">
     <div class="modal-content">
       <button class="close-btn" id="closeSettingsBtn"><i class="fas fa-times"></i></button>
@@ -465,7 +465,7 @@
       let AGGRESSIVE_MODE = false;
       let isWaiting = false;
 
-      // DOM
+     
       const chatListEl = document.getElementById('chatList');
       const chatMessagesEl = document.getElementById('chatMessages');
       const userInput = document.getElementById('userInput');
@@ -485,7 +485,7 @@
       const burgerBtn = document.getElementById('burgerBtn');
       const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-      // Мобильное меню
+     
       function openSidebar() {
         sidebar.classList.add('open');
         sidebarOverlay.classList.add('show');
@@ -500,14 +500,14 @@
       });
       sidebarOverlay.addEventListener('click', closeSidebar);
 
-      // Закрывать меню при выборе чата (на мобильных)
+      
       chatListEl.addEventListener('click', (e) => {
         if (e.target.closest('.chat-item') && !e.target.closest('.chat-delete')) {
           if (window.innerWidth <= 768) closeSidebar();
         }
       });
 
-      // Загрузка/сохранение
+      
       function loadChats() { chats = JSON.parse(localStorage.getItem(STORAGE_CHATS) || '[]'); }
       function saveChats() { localStorage.setItem(STORAGE_CHATS, JSON.stringify(chats)); }
       function getActiveChat() { return chats.find(c => c.id === activeChatId) || null; }
@@ -682,7 +682,7 @@
       openSettingsBtn.addEventListener('click', () => settingsModal.classList.add('show'));
       closeSettingsBtn.addEventListener('click', () => settingsModal.classList.remove('show'));
 
-      // Предупреждение
+      
       if (localStorage.getItem(STORAGE_WARNING_CLOSED) === 'true') {
         warningBanner.style.display = 'none';
       }
@@ -691,7 +691,7 @@
         localStorage.setItem(STORAGE_WARNING_CLOSED, 'true');
       });
 
-      // Темы
+    
       function applyTheme(theme) {
         document.body.className = '';
         if (theme && theme !== 'dark') document.body.classList.add('theme-' + theme);
