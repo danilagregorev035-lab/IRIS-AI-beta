@@ -1,3 +1,7 @@
+
+                                                                                                                       DONT WORK NOW
+                                                                                                                       DONT WORK NOW
+
 (RU/ENG) ENG:
 
 🌌 IRIS AI — Smart Neural Network Without API Key
